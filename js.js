@@ -1,24 +1,28 @@
 var Lib = {};
 
-Lib.addScript = function(url){
+Lib.addScript = function(url,doc){
+  doc = doc || document;
   var s;
   s = document.createElement("script");
+  s.setAttribute("async","async");
   s.type = "text/javascript";
   s.language = "JavaScript";
   s.src=url;
-  document.getElementsByTagName("head")[0].appendChild(s);
+  doc.getElementsByTagName("head")[0].appendChild(s);
 };
 
-Lib.addStyle = function(url){
+Lib.addStyle = function(url,doc){
+  doc = doc || document;
   var s;
   s = document.createElement("link");
   s.type = "text/css";
-  s.href=url;
   s.rel="stylesheet";
-  document.getElementsByTagName("head")[0].appendChild(s);
+  s.href=url;
+  doc.getElementsByTagName("head")[0].appendChild(s);
 };
 
-Lib.addScriptInner = function(txt){
+Lib.addScriptInner = function(txt,doc){
+  doc = doc || document;
   var s;
   s = document.createElement("script");
   s.type = "text/javascript";
@@ -27,17 +31,21 @@ Lib.addScriptInner = function(txt){
   var t = document.createTextNode(txt);
   s.appendChild(t);
   
-  document.getElementsByTagName("head")[0].appendChild(s);
+  doc.getElementsByTagName("head")[0].appendChild(s);
 };
 
-Lib.addStyleInner = function(txt){
+Lib.addStyleInner = function(txt,doc){
+  doc = doc || document;
   var s;
   s = document.createElement("style");
   s.type = "text/css";
-  s.href=url;
   
   var t = document.createTextNode(txt);
   s.appendChild(t);
   
-  document.getElementsByTagName("head")[0].appendChild(s);
+  doc.getElementsByTagName("head")[0].appendChild(s);
 };
+
+
+
+
